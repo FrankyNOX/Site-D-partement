@@ -31,12 +31,14 @@
                         <thead>
                         <tr>
                             <th>Matieres</th>
+                            <th>Classe</th>
                             <th>Nom</th>
                             <th class="no-sort"></th>
                         </tr>
                         </thead>
                         <tfoot>
                         <tr>
+                            <th></th>
                             <th></th>
                             <th></th>
                             <th class="actions"></th>
@@ -49,6 +51,11 @@
                                 <td>
                                     @if ($item->subject)
                                         {{ $item->subject->name }}
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($item->sale)
+                                        {{ $item->sale->name }}
                                     @endif
                                 </td>
                                 <td><a href="{{ route(ADMIN . '.forums.edit', $item->id) }}">{{ $item->name }}</a></td>

@@ -14,13 +14,13 @@
                         <img src="{{$chapitre->picture}}">
                     </div>
                     <div class="content">
-                        <a class="header">{{$chapitre->name}}</a>
+                        <a href="{{ route('lecons',[$chapitre->id]) }}" class="header">{{$chapitre->name}}</a>
                         <div class="meta">
                             <span class="cinema">Mis en ligne {{$chapitre->created_at->diffForHumans()}}</span>
                         </div>
                         <div class="description">
                             <p>
-                                {{$chapitre->description}}
+                                {!! $chapitre->description !!}
                             </p>
                         </div>
                         <div class="extra">

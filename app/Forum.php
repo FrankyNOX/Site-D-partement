@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Forum extends Model
 {
-    protected $fillable =['subject_id','name','description','picture'];
+    protected $fillable =['subject_id','sale_id','name','description','picture'];
 
     /*__________________________________________________________________________________________________________________________
    |
@@ -24,6 +24,9 @@ class Forum extends Model
     public function messages()
     {
         return $this->hasMany('App\Message');
+    }
+    public function sale(){
+        return $this->belongsTo('App\Sale');
     }
 
 

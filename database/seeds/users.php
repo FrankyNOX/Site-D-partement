@@ -72,13 +72,6 @@ class users extends Seeder
                     $lesson = factory('App\Lesson', 05)->create([
                         'chapter_id'=> $chapter->id,
                     ]);
-                    $lesson->each(function ($lesson) use ($user){
-                        factory('App\Comment',05)->create([
-                            'user_id'=> function () use ($user) {
-                                return $user->random()->id;},
-                            'lesson_id'=> $lesson->id,
-                        ]);
-                    });
                 });
             });
         });

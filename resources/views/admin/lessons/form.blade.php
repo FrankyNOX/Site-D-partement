@@ -9,8 +9,8 @@
 @else
     {!! Form::mySelect('chapter_id', 'Chapitre', App\Chapter::whereIn('subject_id',$subjects)->pluck('name', 'id')->toArray(), null, ['class'=>'chosen']) !!}
     @endif
-{!! Form::myInput('text', 'name', 'Name', ['required']) !!}
-{!! Form::myInput('text', 'description', 'Description', ['required']) !!}
-{!! Form::myInput('text', 'content', 'Contenue', ['required']) !!}
+{!! Form::myInput('text', 'name', 'Nom', ['required']) !!}
+{!! Form::myTextArea('description', 'Description', ['required']) !!}
+{!! Form::myTextArea('content', 'Contenue', ['required']) !!}
 {!! Form::myFileImage('picture', 'Image', $img_url) !!}
 

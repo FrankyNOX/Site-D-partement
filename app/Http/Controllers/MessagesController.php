@@ -37,7 +37,7 @@ class MessagesController extends Controller
     public function store(Request $request)
     {
         Message::create(request()->all());
-        return redirect()->route(ADMIN.'.messages.index')->withSuccess(trans('app.success_store'));
+        return back()->withSuccess(trans('app.success_store'));
     }
 
     /**

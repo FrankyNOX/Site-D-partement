@@ -9,7 +9,7 @@
     <div class="ui grid">
         <div class="ui three wide column"></div>
         <div class="ui ten wide column">
-            <h2>Bonjour {{$user->title.' '.$user->firstname.' '.$user->lastname}}.</h2> <br> <h3>Voici vous differentes unites d'enseignements ci dessous.</h3>
+            <h2>Bonjour {{$user->titlename().' '.$user->firstname.' '.$user->lastname}}.</h2> <br> <h3>Voici vous differentes unites d'enseignements ci dessous.</h3>
             <br>
                 <div class="ui four wide special cards">
                     @forelse($subjects as $subject )
@@ -39,6 +39,30 @@
                         </div>
                     @empty
                     @endforelse
+                        <div class="card">
+                            <div class="blurring dimmable image">
+                                <div class="ui dimmer">
+                                    <div class="content">
+                                        <div class="center">
+                                            <div class="ui inverted button"><a href="{{route('forums')}}"> Voir les discutions </a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img src="{{$subject->picture}}">
+                            </div>
+                            <div class="content">
+                                <a class="header">Mes discutions</a>
+                                <div class="meta">
+                                    <span class="date">Mis en ligne {{$subject->created_at->diffForHumans()}}</span>
+                                </div>
+                            </div>
+                            <div class="extra content">
+                                <a>
+                                    <i class="users icon"></i>
+                                    2 Members
+                                </a>
+                            </div>
+                        </div>
                 </div>
             </div>
         <div class="ui two wide column"></div>

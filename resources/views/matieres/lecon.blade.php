@@ -14,7 +14,7 @@
                         <img src="{{$lecon->picture}}">
                     </a>
                     <div class="content">
-                        <a class="header"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{$lecon->name}}</font></font></a>
+                        <a class="header">{{$lecon->name}}</a>
                         <div class="description">
                             <p>{!! $lecon->description !!}</p>
                         </div>
@@ -36,13 +36,12 @@
             <div class="ui threaded comments">
                 <h3 class="ui dividing header">commentaires</h3>
                 @foreach($comments as $comment)
-
                     <div class="comment">
                         <a class="avatar">
                             <img src="{{$comment->user->avatar}}">
                         </a>
                         <div class="content">
-                            <a class="author">{{$comment->user->title.''.$comment->user->firstname.''.$comment->user->lastname}}</a>
+                            <a class="author">{{$comment->user->titlename().' '.$comment->user->firstname.' '.$comment->user->lastname}}</a>
                             <div class="metadata">
                                 <span class="date"> {{$comment->created_at->diffForHumans()}}</span>
                             </div>
@@ -54,9 +53,7 @@
                             </div>
                         </div>
                     </div>
-
                 @endforeach
-
                 <form class="ui reply form" action="{{route('admin.comments.store')}}" method="post">
                     {{ csrf_field() }}
                     <input type="hidden" name="lesson_id" value="{{$lecon->id}}">
@@ -68,6 +65,7 @@
             </div>
 
         </div>
+        <div class="ui two wide column"></div>
     </div>
 
 

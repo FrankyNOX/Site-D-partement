@@ -14,7 +14,8 @@ class ForumsController extends Controller
      */
     public function index()
     {
-        $items = Forum::with('subject')->get();
+        $items = Forum::with('subject','sale')->get();
+        dd($items);
         return view('admin.forums.index', compact('items'));
     }
 
@@ -44,6 +45,7 @@ class ForumsController extends Controller
             if($file->move('images\forums',$name))
             {
                 $item->subject_id = $parameters['subject_id'] ;
+                $item->sale_id = $parameters['sale_id'] ;
                 $item->name =  $parameters['name'] ;
                 $item->description = $parameters['description'] ;
                 $item-> picture = "/images/forums/".$name;
@@ -94,6 +96,7 @@ class ForumsController extends Controller
             if($file->move('images\forums',$name))
             {
                 $item->subject_id = $parameters['subject_id'] ;
+                $item->sale_id = $parameters['sale_id'] ;
                 $item->name =  $parameters['name'] ;
                 $item->description = $parameters['description'] ;
                 $item-> picture = "/images/forums/".$name;

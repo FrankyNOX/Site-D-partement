@@ -21,4 +21,7 @@ class Sale extends Model
     {
         return $this->hasMany('App\User');
     }
+    public function forum(){
+        return $this->hasOne('App\Forum');
+    }
 }

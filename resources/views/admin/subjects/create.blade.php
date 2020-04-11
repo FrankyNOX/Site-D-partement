@@ -19,8 +19,8 @@
         </div>
 
       	<div class="box-footer" style="background-color:#f5f5f5;border-top:1px solid #d2d6de;">
-      	  <button type="submit" class="btn btn-info" style="width:100px;">Save</button>
-          <a class="btn btn-warning " href="{{ route(ADMIN.'.subjects.index') }}" style="width:100px;"><i class="fa fa-btn fa-back"></i>Cancel</a>
+      	  <button type="submit" class="btn btn-info" style="width:100px;">Enregistrer</button>
+          <a class="btn btn-warning " href="{{ route(ADMIN.'.subjects.index') }}" style="width:100px;"><i class="fa fa-btn fa-back"></i>Annuler</a>
       	</div>
 
         {!! Form::close() !!}

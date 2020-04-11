@@ -7,6 +7,12 @@ return [
         '1' => 'Yes',
     ],
 
+    'title' => [
+        '0' => 'M.',
+        '1' => 'Dr.',
+        '2' => 'Pr.',
+    ],
+
     'role' => [
         '0' => 'Etudiant',
         '1' => 'Enseignant',

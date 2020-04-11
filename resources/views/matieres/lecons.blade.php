@@ -19,7 +19,7 @@
                                     Mis en ligne {{$lecon->created_at->diffForHumans()}}
                                         </div>
                                 <div class="description">
-                                           {{$lecon->description}}
+                                           {!! $lecon->description !!}
                                         </div>
                             </div>
                             <div class="extra content">

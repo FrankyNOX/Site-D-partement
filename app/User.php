@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'firstname','lastname','title','email', 'password', 'role', 'active', 'avatar'
+        'firstname','lastname','title','sale_id','email', 'password', 'role', 'active', 'avatar'
     ];
 
     /**
@@ -38,7 +38,8 @@ class User extends Authenticatable
     public static function rules($update = false, $id = null)
     {
         $commun = [
-            'name' => 'required|min:2',
+            'firstname' => 'required|min:2',
+            'lastname' => 'required|min:2',
             'email'    => "required|email|unique:users,email,$id",
             'password' => 'nullable|confirmed',
         ];
@@ -61,6 +62,11 @@ class User extends Authenticatable
     public function rolename()
     {
         return config('variables.role')[$this->attributes['role']];
+    }
+
+    public function titlename()
+    {
+        return config('variables.title')[$this->attributes['title']];
     }
 
     /**
@@ -92,10 +98,7 @@ class User extends Authenticatable
 
         return url('/') . config('variables.avatar.public') . $value;
     }
-    public function setAvatarAttribute($photo)
-    {
-        $this->attributes['avatar'] = move_file($photo, 'avatar.image');
-    }
+
 
     /*
     |------------------------------------------------------------------------------------

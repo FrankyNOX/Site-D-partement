@@ -42,7 +42,27 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, User::rules());
-        User::create($request->all());
+
+        $parameters = $request->except(['_token']);
+        $item = new User();
+        $parameters = $request->except(['_token']);
+        if($file = $request->file('avatar') )
+        {
+            $name = date('Y-M-j-s').$file->getClientOriginalName();
+            if($file->move('images\users',$name))
+            {
+                $item->firstname = $parameters['firstname'] ;
+                $item->lastname =  $parameters['lastname'] ;
+                $item->title = $parameters['title'];
+                $item->email = $parameters['email'];
+                $item->password = $parameters['password'];
+                $item->role = $parameters['role'];
+                $item->sale_id = $parameters['sale_id'];
+                $item->active = $parameters['active'] ;
+                $item->avatar = "/images/users/".$name;
+                $item->save();
+            }
+        }
         return redirect()->route(ADMIN.'.users.index')->withSuccess(trans('app.success_store'));
     }
 
@@ -80,7 +100,27 @@ class UsersController extends Controller
     {
         $this->validate($request, User::rules(true, $id));
         $item = User::findOrFail($id);
-        $item->update($request->all());
+        $parameters = $request->except(['_token']);
+        if($file = $request->file('avatar') )
+        {
+            $name = date('Y-M-j-s').$file->getClientOriginalName();
+            if($file->move('images\users',$name))
+            {
+                 $item->firstname = $parameters['firstname'] ;
+                 $item->lastname =  $parameters['lastname'] ;
+                 $item->title = $parameters['title'];
+                 $item->email = $parameters['email'];
+                 $item->password = $parameters['password'];
+                 $item->role = $parameters['role'];
+                 $item->sale_id = $parameters['sale_id'];
+                 $item->active = $parameters['active'] ;
+                 $item->avatar = "/images/users/".$name;
+                 $item->save();
+            }
+        }
+        else{
+            $item->update($request->all());
+        }
         return redirect()->route(ADMIN.'.users.index')->withSuccess(trans('app.success_update'));
     }
 

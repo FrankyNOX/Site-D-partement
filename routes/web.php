@@ -4,6 +4,8 @@ Route::get('/', function () {
     return view('homes.home');
 })->name('home');
 
+
+
 Route::get('matiere', 'MatieresController@matieres');
 Route::get('matiere/{id}/chapitre', 'MatieresController@chapitres')->name('chapitre');
 Route::get('chapitre/{id}/lecons', 'MatieresController@lecons')->name('lecons');
@@ -11,6 +13,10 @@ Route::get('lecons/{id}/lecon', 'MatieresController@lecon')->name('lecon');
 Route::get('login', function () {
     return view('auth.login');
 });
+
+Route::get('forums', 'MatieresController@forums')->name('forums');
+
+Route::get('forum/{id}', 'MatieresController@forum')->name('forum');
 
 Auth::routes();
 Route::get('logout', 'Auth\LoginController@logout');
